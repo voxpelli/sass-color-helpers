@@ -39,6 +39,7 @@ $contrast: ch_color_contrast($backgroundColor, $textColor);
 ```
 
 Originally published at: https://gist.github.com/voxpelli/6304812
+
 Based on code from: https://github.com/LeaVerou/contrast-ratio
 
 #### Methods:
@@ -61,6 +62,7 @@ $color: ch_hsv_to_color($h, $s, $v);
 ```
 
 Originally published at: https://gist.github.com/voxpelli/1069204
+
 Based on code from: http://ariya.blogspot.com/2008/07/converting-between-hsl-and-hsv.html
 
 #### Methods:
@@ -86,6 +88,7 @@ $color: ch_hsv_to_color($h, $s, $v);
 ```
 
 Originally published at: https://gist.github.com/voxpelli/6304812
+
 Based on code from: http://rosettacode.org/wiki/Greatest_common_divisor#JavaScript and http://rosettacode.org/wiki/Nth_root#JavaScript
 
 #### Methods:
