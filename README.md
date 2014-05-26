@@ -10,7 +10,7 @@ Lastly also some candy for the geeks: nth root and decimal exponent powers funct
 bower install sass-color-helpers --save
 ```
 
-Then include either the individual helpers manually from the `lib/` folder, set the load path of something like [grunt-contrib-sass](https://npmjs.org/package/grunt-contrib-sass) to look for  [grunt-bower-install](https://www.npmjs.org/package/grunt-bower-install)
+Then either manually include the individual helpers from the `lib/` folder or set the load path of something like [grunt-contrib-sass](https://npmjs.org/package/grunt-contrib-sass) to look for files in the bower folder – or use something like [grunt-bower-install](https://www.npmjs.org/package/grunt-bower-install) to automate it all.
 
 ## Helpers
 
