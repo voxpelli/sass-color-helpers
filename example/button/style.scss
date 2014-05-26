@@ -1,0 +1,129 @@
+// Basic style for the page
+
+*{margin:0;padding:0}
+html{background:#DEDEDE}
+body{font-size:18px;font-family:"Helvetica neue", Helvetica, Arial, "MS Trebuchet", sans-serif;margin:10px auto;max-width:600px;color:#212121}
+a{color:#B82C2C}
+a:hover{color:#912323}
+img{border:0}
+h1{font-size:2.8em;padding:2px 20px;text-align:center;}
+h1 a{color:#212121;text-shadow:#fff 0 1px 1px;text-decoration:none}
+h1 a:hover{color:#212121}
+h1 em{color:#d33;font-style:normal}
+h2{font-size:1em}
+h2,p,li{margin-bottom:5px}
+ul,ol{padding-left:1.5em}
+.subtitle{font-size:.8em;padding:0 100px;text-align:center;margin-bottom:15px}
+body > div:not(#header) {background:#fff;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;padding: 15px 20px;margin-bottom:8px}
+address{font-style:normal;padding:0 10px 10px;text-align:center;font-size:.7em}
+
+// Importing the color helpers
+
+@import "../../_index.scss";
+
+// Mixin and base style for buttons
+
+@function tweak_brightness($hsv, $tweak) {
+  $hsv: ch_color_to_hsv($hsv);
+
+  $v: nth($hsv, 3);
+  $s: nth($hsv, 2);
+  $h: nth($hsv, 1);
+
+  $v: max(0%, min(100%, $v + $tweak));
+
+  @return ch_hsv_to_color($h, $s, $v);
+}
+
+@mixin button-color($baseColor) {
+  $lineColor: tweak_brightness($baseColor, -8);
+  $topColor: tweak_brightness($baseColor, 9);
+  $fontColor: tweak_brightness($baseColor, -33);
+  $fontHighlightColor: tweak_brightness($fontColor, 10);
+
+  color: $fontColor;
+  border-color: $lineColor;
+  box-shadow: 0 1px 1px rgba(0,0,0,.2), inset 0 2px 2px -2px #fff,
+    0 0 0 11px transparentize($lineColor, .82);
+  background: linear-gradient($topColor, $baseColor);
+
+  &:hover {
+    color: $fontHighlightColor;
+  }
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 20px;
+  height: 20px;
+  padding: 10px;
+  margin: 11px;
+  border: 1px solid;
+  border-radius: 3px;
+
+  text-shadow: 0 1px rgba(255,255,255, .4);
+
+  @include button-color(#9fcb56);
+}
+
+// Individually styled buttons
+
+.special-button {
+  @extend .button;
+  @include button-color(#c6c250);
+}
+
+.button.disabled {
+  @include button-color(#ccc);
+}
+
+// Contrast check buttons
+
+@mixin button-color-contrast-alert($baseColor) {
+  @include button-color($baseColor);
+
+  $averageColor: tweak_brightness($baseColor, 9 / 2);
+  $textColor: tweak_brightness($baseColor, -33);
+  $contrast: ch_color_contrast($averageColor, $textColor);
+
+  @if ($contrast < 3) {
+    @warn "Contrast ratio of #{$textColor} on #{$averageColor} is pretty bad, just #{$contrast}";
+  }
+}
+
+.button.good-contrast {
+  @include button-color-contrast-alert(#9fcb56);
+}
+
+.button.bad-contrast {
+  @include button-color-contrast-alert(#000);
+}
+
+// Contrast calculation buttons
+
+@mixin button-color-contrast($baseColor) {
+  @include button-color($baseColor);
+
+  $averageColor: tweak_brightness($baseColor, 9 / 2);
+  $darkTextColor: tweak_brightness($baseColor, -33);
+  $lightTextColor: tweak_brightness($baseColor, 50);
+  $best: ch_best_color_contrast($averageColor, ($darkTextColor, $lightTextColor));
+
+  color: $best;
+
+  @if ($best == $lightTextColor) {
+    text-shadow: 0 -1px rgba(0,0,0, .4);
+    &:hover {
+      color: tweak_brightness($best, -10);
+    }
+  }
+}
+
+.button.smart-contrast {
+  @include button-color-contrast(#666);
+}
+
+.button.smart-light-contrast {
+  @include button-color-contrast(#c6c250);
+}

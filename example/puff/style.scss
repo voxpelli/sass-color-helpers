@@ -1,0 +1,65 @@
+// Basic style for the page
+
+*{margin:0;padding:0}
+html{background:#DEDEDE}
+body{font-size:18px;font-family:"Helvetica neue", Helvetica, Arial, "MS Trebuchet", sans-serif;margin:10px auto;max-width:600px;color:#212121}
+a{color:#B82C2C}
+a:hover{color:#912323}
+img{border:0}
+h1{font-size:2.8em;padding:2px 20px;text-align:center;}
+h1 a{color:#212121;text-shadow:#fff 0 1px 1px;text-decoration:none}
+h1 a:hover{color:#212121}
+h1 em{color:#d33;font-style:normal}
+h2{font-size:1em}
+h2,p,li{margin-bottom:5px}
+ul,ol{padding-left:1.5em}
+.subtitle{font-size:.8em;padding:0 100px;text-align:center;margin-bottom:15px}
+body > div:not(#header) {background:#fff;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;padding: 15px 20px;margin-bottom:8px}
+address{font-style:normal;padding:0 10px 10px;text-align:center;font-size:.7em}
+
+// Importing the color helpers
+
+@import "../../_index.scss";
+
+// Basic setup
+
+.background {
+  // Using an average color background instead of an image to avoid having to include an image in the repo
+  background: #607D59 url(https://farm4.staticflickr.com/3443/3726632321_a5b097084c_o.jpg) no-repeat center center;
+  padding: 20px 20px 80px 0;
+}
+
+// Puff setup
+
+// If we know a white block transparent block has been placed on a background
+// and we pick two adjacent colors – one from within the white block and one just
+// outside of it – and then put those three colors into the following function –
+// then the result will be an estimate of the transparency of the white block
+$alpha: ch_calculate_alpha(#FFF, #526D4E, #DFE4DF);
+
+// If we have a block adjacent to the white block which is of an unknown color,
+// but which can be expected to have the same transparency as the white block,
+// then we can repeat the process and pick two adjacent colors – one from within
+// the block and one just outside of the block besides the first one – and then
+// put those colors and the alpha level that we calculated in the previous step
+// into the following function and get back an estimate of the color of the block
+$actionColor: ch_calculate_top_color($alpha, #BEDBA1, #89D338);
+
+.puff {
+  background: rgba(255, 255, 255, $alpha);
+
+  padding: 20px;
+  position: relative;
+}
+
+.action {
+  // As we only get back the color we need to set the alpha level as well
+  background: change-color($actionColor, $alpha: $alpha);
+
+  position: absolute;
+  top: 100%;
+  right: 0;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+}

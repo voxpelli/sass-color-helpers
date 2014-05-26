@@ -1,0 +1,25 @@
+@function ch_calculate_alpha($topColor, $bottomColor, $targetColor) {
+  $topRgb: red($topColor), green($topColor), blue($topColor);
+  $bottomRgb: red($bottomColor), green($bottomColor), blue($bottomColor);
+  $targetRgb: red($targetColor), green($targetColor), blue($targetColor);
+  $alphaAvg: 0;
+
+  @for $i from 1 through 3 {
+    $alphaAvg: ($alphaAvg * ($i - 1) + (nth($targetRgb, $i) - nth($bottomRgb, $i)) / (nth($topRgb, $i) - nth($bottomRgb, $i))) / $i;
+  }
+
+  @return $alphaAvg;
+}
+
+@function ch_calculate_top_color($alpha, $bottomColor, $targetColor) {
+  $topRgb: ();
+  $bottomRgb: red($bottomColor), green($bottomColor), blue($bottomColor);
+  $targetRgb: red($targetColor), green($targetColor), blue($targetColor);
+
+  @for $i from 1 through 3 {
+    $topRgb: append($topRgb, (nth($targetRgb, $i) - (1 - $alpha) * nth($bottomRgb, $i)) / $alpha);
+  }
+
+  @return rgb(nth($topRgb, 1), nth($topRgb, 2), nth($topRgb, 3));
+}
+
