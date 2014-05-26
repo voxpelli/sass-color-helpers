@@ -96,6 +96,10 @@ Based on code from: http://rosettacode.org/wiki/Greatest_common_divisor#JavaScri
 * `ch_max($v1, $v2)` – returns the biggest of the two values
 * `ch_min($v1, $v2)` – returns the smaller of the two values
 
+## License
+
+MIT, [http://voxpelli.mit-license.org](http://voxpelli.mit-license.org)
+
 ## Changelog
 
 ### 1.0.0
