@@ -33,14 +33,15 @@
 }
 
 @function ch_best_color_contrast($base, $colors, $tolerance: 0) {
-  $contrast: ch_color_contrast($base, nth($colors, 1));
   $best: nth($colors, 1);
+  $contrast: ch_color_contrast($base, $best);
 
   @for $i from 2 through length($colors) {
-    $current_contrast: ch_color_contrast($base, nth($colors, $i));
+    $current_color: nth($colors, $i);
+    $current_contrast: ch_color_contrast($base, $current_color);
     @if ($current_contrast - $contrast > $tolerance) {
+      $best: $current_color;
       $contrast: $current_contrast;
-      $best: nth($colors, $i);
     }
   }
 
