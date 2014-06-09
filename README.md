@@ -75,18 +75,6 @@ Based on code from: http://ariya.blogspot.com/2008/07/converting-between-hsl-and
 
 ### Math
 
-```scss
-$hsv: ch_color_to_hsv($color);
-
-$v: nth($hsv, 3);
-$s: nth($hsv, 2);
-$h: nth($hsv, 1);
-
-$v: max(0%, min(100%, $v + $tweak));
-
-$color: ch_hsv_to_color($h, $s, $v);
-```
-
 Originally published at: https://gist.github.com/voxpelli/6304812
 
 Based on code from: http://rosettacode.org/wiki/Greatest_common_divisor#JavaScript and http://rosettacode.org/wiki/Nth_root#JavaScript
