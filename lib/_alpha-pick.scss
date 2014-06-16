@@ -1,4 +1,4 @@
-@function ch_calculate_alpha($topColor, $bottomColor, $targetColor) {
+@function ch-calculate-alpha($topColor, $bottomColor, $targetColor) {
   $topRgb: red($topColor), green($topColor), blue($topColor);
   $bottomRgb: red($bottomColor), green($bottomColor), blue($bottomColor);
   $targetRgb: red($targetColor), green($targetColor), blue($targetColor);
@@ -11,7 +11,7 @@
   @return $alphaAvg;
 }
 
-@function ch_calculate_top_color($alpha, $bottomColor, $targetColor) {
+@function ch-calculate-top-color($alpha, $bottomColor, $targetColor) {
   $topRgb: ();
   $bottomRgb: red($bottomColor), green($bottomColor), blue($bottomColor);
   $targetRgb: red($targetColor), green($targetColor), blue($targetColor);

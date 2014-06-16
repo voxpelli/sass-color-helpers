@@ -23,8 +23,8 @@ address{font-style:normal;padding:0 10px 10px;text-align:center;font-size:.7em}
 
 // Mixin and base style for buttons
 
-@function tweak_brightness($hsv, $tweak) {
-  $hsv: ch_color_to_hsv($hsv);
+@function tweak-brightness($hsv, $tweak) {
+  $hsv: ch-color-to-hsv($hsv);
 
   $v: nth($hsv, 3);
   $s: nth($hsv, 2);
@@ -32,14 +32,14 @@ address{font-style:normal;padding:0 10px 10px;text-align:center;font-size:.7em}
 
   $v: max(0%, min(100%, $v + $tweak));
 
-  @return ch_hsv_to_color($h, $s, $v);
+  @return ch-hsv-to-color($h, $s, $v);
 }
 
 @mixin button-color($baseColor) {
-  $lineColor: tweak_brightness($baseColor, -8);
-  $topColor: tweak_brightness($baseColor, 9);
-  $fontColor: tweak_brightness($baseColor, -33);
-  $fontHighlightColor: tweak_brightness($fontColor, 10);
+  $lineColor: tweak-brightness($baseColor, -8);
+  $topColor: tweak-brightness($baseColor, 9);
+  $fontColor: tweak-brightness($baseColor, -33);
+  $fontHighlightColor: tweak-brightness($fontColor, 10);
 
   color: $fontColor;
   border-color: $lineColor;
@@ -83,9 +83,9 @@ address{font-style:normal;padding:0 10px 10px;text-align:center;font-size:.7em}
 @mixin button-color-contrast-alert($baseColor) {
   @include button-color($baseColor);
 
-  $averageColor: tweak_brightness($baseColor, 9 / 2);
-  $textColor: tweak_brightness($baseColor, -33);
-  $contrast: ch_color_contrast($averageColor, $textColor);
+  $averageColor: tweak-brightness($baseColor, 9 / 2);
+  $textColor: tweak-brightness($baseColor, -33);
+  $contrast: ch-color-contrast($averageColor, $textColor);
 
   @if ($contrast < 3) {
     @warn "Contrast ratio of #{$textColor} on #{$averageColor} is pretty bad, just #{$contrast}";
@@ -105,17 +105,17 @@ address{font-style:normal;padding:0 10px 10px;text-align:center;font-size:.7em}
 @mixin button-color-contrast($baseColor) {
   @include button-color($baseColor);
 
-  $averageColor: tweak_brightness($baseColor, 9 / 2);
-  $darkTextColor: tweak_brightness($baseColor, -33);
-  $lightTextColor: tweak_brightness($baseColor, 50);
-  $best: ch_best_color_contrast($averageColor, ($darkTextColor, $lightTextColor));
+  $averageColor: tweak-brightness($baseColor, 9 / 2);
+  $darkTextColor: tweak-brightness($baseColor, -33);
+  $lightTextColor: tweak-brightness($baseColor, 50);
+  $best: ch-best-color-contrast($averageColor, ($darkTextColor, $lightTextColor));
 
   color: $best;
 
   @if ($best == $lightTextColor) {
     text-shadow: 0 -1px rgba(0,0,0, .4);
     &:hover {
-      color: tweak_brightness($best, -10);
+      color: tweak-brightness($best, -10);
     }
   }
 }

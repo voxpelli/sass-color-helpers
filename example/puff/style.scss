@@ -35,7 +35,7 @@ address{font-style:normal;padding:0 10px 10px;text-align:center;font-size:.7em}
 // and we pick two adjacent colors – one from within the white block and one just
 // outside of it – and then put those three colors into the following function –
 // then the result will be an estimate of the transparency of the white block
-$alpha: ch_calculate_alpha(#FFF, #526D4E, #DFE4DF);
+$alpha: ch-calculate-alpha(#FFF, #526D4E, #DFE4DF);
 
 // If we have a block adjacent to the white block which is of an unknown color,
 // but which can be expected to have the same transparency as the white block,
@@ -43,7 +43,7 @@ $alpha: ch_calculate_alpha(#FFF, #526D4E, #DFE4DF);
 // the block and one just outside of the block besides the first one – and then
 // put those colors and the alpha level that we calculated in the previous step
 // into the following function and get back an estimate of the color of the block
-$actionColor: ch_calculate_top_color($alpha, #BEDBA1, #89D338);
+$actionColor: ch-calculate-top-color($alpha, #BEDBA1, #89D338);
 
 .puff {
   background: rgba(255, 255, 255, $alpha);
