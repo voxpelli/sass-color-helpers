@@ -16,6 +16,7 @@
     "lib",
     "sass-color-helpers.gemspec",
     "*.gem",
-    "sache.json"
+    "sache.json",
+    ".gitignore"
   ]
 }
