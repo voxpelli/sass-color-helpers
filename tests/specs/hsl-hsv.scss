@@ -1,0 +1,28 @@
+@include describe('HSL + HSV conversion') {
+  @include it("should expect a color to be converted correctly to HSV") {
+    $hsv: ch-hsl-to-hsv(#951);
+
+    @include should(expect($hsv), to(have-length-of(3)));
+    @include should(expect(nth($hsv, 1)), to(be-close-to(30deg, 0)));
+    @include should(expect(nth($hsv, 2)), to(be-close-to(89%, 0)));
+    @include should(expect(nth($hsv, 3)), to(be-close-to(60%, 0)));
+  }
+
+  @include it("should expect another color to be converted correctly to HSV") {
+    $hsv: ch-hsl-to-hsv(#EFBF5D);
+
+    @include should(expect($hsv), to(have-length-of(3)));
+    @include should(expect(nth($hsv, 1)), to(be-close-to(40deg, 0)));
+    @include should(expect(nth($hsv, 2)), to(be-close-to(61%, 0)));
+    @include should(expect(nth($hsv, 3)), to(be-close-to(94%, 0)));
+  }
+
+  @include it("should expect a color to be converted back and forth with no loss") {
+    $initialColor: #EFBF5D;
+    $hsv: ch-hsl-to-hsv($initialColor);
+    $finalColor: ch-hsv-to-color($hsv);
+
+    @include should(expect($finalColor), to(have-type-of(color)));
+    @include should(expect($finalColor), to(equal($finalColor)));
+  }
+}

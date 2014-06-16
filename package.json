@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "devDependencies": {
+    "bootcamp": "thejameskyle/bootcamp#5036a06556d5cf39a87be4327ba5f61e2aca7fc6",
+    "grunt": "^0.4.5",
+    "grunt-contrib-sass": "^0.7.3"
+  }
+}

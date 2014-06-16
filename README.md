@@ -24,6 +24,16 @@ Install as a Compass extension through ruby gems: `gem install sass-color-helper
 
 Just copy the content of `stylesheets/` into a relevant part of your project, or just pick some of the files. If you include the individual files yourself – then remember that `_contrast.scss` and `_hsv-hsl.scss` both relies on `_math.scss` and you should therefore include that one first.
 
+## Requirements
+
+* Should work with all Sass 3.2 compatible preprocessors
+
+### Tested with:
+
+* Sass Gem, v 3.3.2 – **works**
+* node-sass (libsass), v 0.9.8 – **works**, excepts for the test
+* sassc (libsass), v 1.0.1 – **doesn't work**
+
 ## Helpers
 
 ### Alpha Picker / Estimation

@@ -17,6 +17,10 @@
     "sass-color-helpers.gemspec",
     "*.gem",
     "sache.json",
-    ".gitignore"
+    ".gitignore",
+    "tests",
+    "package.json",
+    "Gruntfile.js",
+    ".travis.yml"
   ]
 }
