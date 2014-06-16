@@ -1,16 +1,24 @@
 # Sass Color Helpers
 
+Pure Sass, no Ruby. Should therefore be [libsass](http://libsass.org/) compatible. Also available as a Compass extension for those who still want that.
+
 A collection of color helpers (and some related math helpers). Handles HSL to HSV/HSB conversion, calculation of contrast (and warnings for worst case scenarios) and estimation of semi-transparent colors – everything to make it easier and more fool-proof to implement a target design and in the end get as good of a design as possible.
 
 Lastly also some candy for the geeks: nth root and decimal exponent powers function. Because graphics can be tough.
 
 ## Installation
 
+**Bower**:
+
 ```bash
 bower install sass-color-helpers --save
 ```
 
-Then either manually include the individual helpers from the `lib/` folder or set the load path of something like [grunt-contrib-sass](https://npmjs.org/package/grunt-contrib-sass) to look for files in the bower folder – or use something like [grunt-bower-install](https://www.npmjs.org/package/grunt-bower-install) to automate it all.
+Then either manually include the individual helpers from the `stylesheets/` folder or set the load path of something like [grunt-contrib-sass](https://npmjs.org/package/grunt-contrib-sass) to look for files in the bower folder – or use something like [grunt-bower-install](https://www.npmjs.org/package/grunt-bower-install) to automate it all.
+
+**Compass**:
+
+Install as a Compass extension through ruby gems: `gem install sass-color-helpers`
 
 ## Helpers
 
@@ -92,6 +100,10 @@ Based on code from: http://rosettacode.org/wiki/Greatest_common_divisor#JavaScri
 MIT, [http://voxpelli.mit-license.org](http://voxpelli.mit-license.org)
 
 ## Changelog
+
+### 2.0.0
+
+* Repackaged as a Compass extension so that the code can be installed through either Compass or Bower (or manually)
 
 ### 1.0.0
 
