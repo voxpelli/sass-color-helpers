@@ -37,11 +37,11 @@
   $contrast: ch-color-contrast($base, $best);
 
   @for $i from 2 through length($colors) {
-    $current_color: nth($colors, $i);
-    $current_contrast: ch-color-contrast($base, $current_color);
-    @if ($current_contrast - $contrast > $tolerance) {
-      $best: $current_color;
-      $contrast: $current_contrast;
+    $currentColor: nth($colors, $i);
+    $currentContrast: ch-color-contrast($base, $currentColor);
+    @if ($currentContrast - $contrast > $tolerance) {
+      $best: $currentColor;
+      $contrast: $currentContrast;
     }
   }
 
