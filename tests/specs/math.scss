@@ -1,0 +1,5 @@
+@include describe('Math') {
+  @include it("should expect 2 pow 4 to be 16") {
+    @include should(expect(ch-pow(2, 4)), to(equal(16)));
+  }
+}
