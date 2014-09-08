@@ -1,6 +1,12 @@
 language: node_js
 node_js:
   - "0.10"
+env:
+- SASS_VERSION=3.3.14
+- SASS_VERSION=latest
+before_script:
+- gem update --system
+- if test $SASS_VERSION != "latest"; then gem install sass -v $SASS_VERSION; else gem install sass; if
 before_script:
   - gem install sass
   - npm install -g grunt-cli
