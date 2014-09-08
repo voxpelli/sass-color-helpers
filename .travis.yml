@@ -5,6 +5,6 @@ env:
   - SASS_VERSION=3.3.14
   - SASS_VERSION=latest
 before_script:
-  - if test $SASS_VERSION != "latest"; then gem install sass -v $SASS_VERSION; else gem install sass; if
+  - if test $SASS_VERSION != "latest"; then gem install sass -v $SASS_VERSION; else gem install sass; fi
   - npm install -g grunt-cli
 script: grunt test
