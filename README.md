@@ -8,6 +8,14 @@ Lastly also some candy for the geeks: nth root and decimal exponent powers funct
 
 ## Installation
 
+**NPM**:
+
+```bash
+npm install sass-color-helpers --save
+```
+
+Then use something like [sass-module-importer](https://www.npmjs.com/package/sass-module-importer) to import it.
+
 **Bower**:
 
 ```bash
