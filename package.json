@@ -1,5 +1,15 @@
 {
-  "private": true,
+  "name": "sass-color-helpers",
+  "version": "2.0.0",
+  "license": "MIT",
+  "description": "A collection of Sass color helpers (and some related math helpers). Handles HSL to HSV/HSB conversion etc.",
+  "homepage": "https://github.com/voxpelli/sass-color-helpers",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/voxpelli/sass-color-helpers.git"
+  },
+  "main": "stylesheets/_color-helpers.scss",
+  "style": "stylesheets/_color-helpers.scss",
   "devDependencies": {
     "bootcamp": "^1.1.7",
     "grunt": "^0.4.5",
