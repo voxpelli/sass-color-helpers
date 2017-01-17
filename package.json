@@ -1,6 +1,6 @@
 {
   "name": "sass-color-helpers",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MIT",
   "description": "A collection of Sass color helpers (and some related math helpers). Handles HSL to HSV/HSB conversion etc.",
   "homepage": "https://github.com/voxpelli/sass-color-helpers",
