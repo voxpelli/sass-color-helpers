@@ -75,7 +75,7 @@ Based on code from: https://github.com/LeaVerou/contrast-ratio
 #### Methods:
 
 * `ch-color-contrast($color1, $color2)` – when given a background color and a front color it returns the [contrast ratio](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef) between those two
-* `ch-best-color-contrast($base, $colors, $tolerance: 0)` – when given a background color and a list of front colors it will return the first front color with the best contrast ratio. If tolerance is set to something higher than 0 than a front color later in the list will only beat a previous color if it improves the contrast ratio  by at least that much – useful if one has a preferably color that one wants to use in all but the most extreme cases.
+* `ch-best-color-contrast($base, $colors: (#fff, #000), $tolerance: 0)` – when given a background color and a list of front colors it will return the first front color with the best contrast ratio. If tolerance is set to something higher than 0 than a front color later in the list will only beat a previous color if it improves the contrast ratio  by at least that much – useful if one has a preferably color that one wants to use in all but the most extreme cases.
 
 ### HSV/HSB to HSL
 
