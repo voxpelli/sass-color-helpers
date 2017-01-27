@@ -32,7 +32,7 @@
   @return $ratio;
 }
 
-@function ch-best-color-contrast($base, $colors, $tolerance: 0) {
+@function ch-best-color-contrast($base, $colors: (#fff, #000), $tolerance: 0) {
   $best: nth($colors, 1);
   $contrast: ch-color-contrast($base, $best);
 
