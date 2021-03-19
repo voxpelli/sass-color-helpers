@@ -1,5 +1,7 @@
 # Sass Color Helpers
 
+***2021 update:** The CSS Color Module Level 5 specifies a native [`color-contrast()`](https://drafts.csswg.org/css-color-5/#colorcontrast) similar to `ch-color-contrast()`.* 
+
 Pure Sass, no Ruby. Should therefore be [libsass](http://libsass.org/) compatible. Also available as a Compass extension for those who still want that.
 
 A collection of color helpers (and some related math helpers). Handles HSL to HSV/HSB conversion, calculation of contrast (and warnings for worst case scenarios) and estimation of semi-transparent colors – everything to make it easier and more fool-proof to implement a target design and in the end get as good of a design as possible.
