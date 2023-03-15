@@ -13,15 +13,15 @@
   @if ($b != 0) {
     @return ch-gcd($b, $a % $b);
   } @else {
-    @return abs($a);
+    @return math.abs($a);
   }
 }
 
 @function ch-pow($base, $exponent, $prec: 12) {
   // Handles decimal exponents by trying to convert them into a fraction and then use a nthRoot-algorithm for parts of the calculation
-  @if (floor($exponent) != $exponent) {
+  @if (math.floor($exponent) != $exponent) {
     $prec2 : ch-pow(10, $prec);
-    $exponent: round($exponent * $prec2);
+    $exponent: math.round($exponent * $prec2);
     $denominator: ch-gcd($exponent, $prec2);
     @return ch-nth-root(ch-pow($base, math.div($exponent, $denominator)), math.div($prec2, $denominator), $prec);
   }

@@ -1,4 +1,4 @@
-@import 'color-helpers/math';
-@import 'color-helpers/alpha-pick';
-@import 'color-helpers/contrast';
-@import 'color-helpers/hsv-hsl';
+@forward 'color-helpers/math';
+@forward 'color-helpers/alpha-pick';
+@forward 'color-helpers/contrast';
+@forward 'color-helpers/hsv-hsl';
