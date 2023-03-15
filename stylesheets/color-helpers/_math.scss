@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @function ch-max($v1, $v2) {
   @return if($v1 > $v2, $v1, $v2);
 }
@@ -21,7 +23,7 @@
     $prec2 : ch-pow(10, $prec);
     $exponent: round($exponent * $prec2);
     $denominator: ch-gcd($exponent, $prec2);
-    @return ch-nth-root(ch-pow($base, $exponent / $denominator), $prec2 / $denominator, $prec);
+    @return ch-nth-root(ch-pow($base, math.div($exponent, $denominator)), math.div($prec2, $denominator), $prec);
   }
 
   $value: $base;
@@ -31,7 +33,7 @@
     }
   } @else if $exponent < 1 {
     @for $i from 0 through -$exponent {
-      $value: $value / $base;
+      $value: math.div($value, $base);
     }
   }
 
@@ -43,7 +45,7 @@
   $x: 1;
 
   @for $i from 0 through $prec {
-    $x: 1 / $n * (($n - 1) * $x + ($num / ch-pow($x, $n - 1)));
+    $x: math.div(1, $n) * (($n - 1) * $x + math.div($num, ch-pow($x, $n - 1)));
   }
 
   @return $x;
