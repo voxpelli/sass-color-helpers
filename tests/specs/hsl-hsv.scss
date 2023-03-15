@@ -1,9 +1,7 @@
 @import '../../node_modules/sass-true/sass/true';
-@import '../../stylesheets/color-helpers/hsv-hsl';
+@import '../utils.scss';
 
-@mixin assert-close-to($actual, $expected, $threshold: 1) {
-  @include assert-true(abs($actual - $expected) < $threshold);
-}
+@import '../../stylesheets/color-helpers/hsv-hsl';
 
 @include describe('HSL + HSV conversion') {
   @include it("should expect a color to be converted correctly to HSV") {

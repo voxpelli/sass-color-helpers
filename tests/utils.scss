@@ -1,0 +1,3 @@
+@mixin assert-close-to($actual, $expected, $threshold: 1) {
+  @include assert-true(abs($actual - $expected) < $threshold, '#{$actual} is more than #{$threshold} away from #{$expected}');
+}
