@@ -1,0 +1,38 @@
+@use '../../node_modules/sass-true' as *;
+@use '../utils' as *;
+@use '../../stylesheets/color-helpers/contrast' as ch;
+
+@include describe('Contrast') {
+  @include it('calculates color luminance') {
+    $actual: ch.color-luminance(#ff0000);
+    @include assert-close-to($actual, 0.2126, 0.0001);
+
+    $actual: ch.color-luminance(#10b981);
+    @include assert-close-to($actual, 0.3676167314, 0.000001);
+  }
+
+  @include it('calculates color contrast') {
+    $actual: ch.color-contrast(#fff, #000);
+    @include assert-equal($actual, 21);
+
+    $actual: ch.color-contrast(#fff, #fff);
+    @include assert-equal($actual, 1);
+
+    $actual: ch.color-contrast(#00ff00, #ff0000);
+    @include assert-equal($actual, 2.9);
+
+    $actual: ch.color-contrast(teal, pink);
+    @include assert-equal($actual, 3.1);
+  }
+
+  @include it('finds best color contrast') {
+    $actual: ch.best-color-contrast(pink);
+    @include assert-equal($actual, #000);
+
+    $actual: ch.best-color-contrast(white, #00ff00 #ff0000);
+    @include assert-equal($actual, #ff0000);
+
+    $actual: ch.best-color-contrast(black, #00ff00 #ff0000);
+    @include assert-equal($actual, #00ff00);
+ }
+}

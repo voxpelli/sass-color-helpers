@@ -1,5 +1,15 @@
+@use '../../node_modules/sass-true' as *;
+@use '../utils' as *;
+@use '../../stylesheets/color-helpers/math' as ch;
+
 @include describe('Math') {
   @include it("should expect two pow four to be sixteen") {
-    @include should(expect(ch-pow(2, 4)), to(equal(16)));
+    @include assert-equal(ch.pow(2, 4), 16);
+  }
+  @include it("should expect the forth root of 16 to be 2") {
+    @include assert-equal(ch.nth-root(16, 4), 2);
+  }
+  @include it("should expect the forth root of 15 to be close to 1.96798") {
+    @include assert-close-to(ch.nth-root(15, 4), 1.96798, 0.00001);
   }
 }

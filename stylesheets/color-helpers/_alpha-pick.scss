@@ -1,25 +1,29 @@
-@function ch-calculate-alpha($topColor, $bottomColor, $targetColor) {
-  $topRgb: red($topColor), green($topColor), blue($topColor);
-  $bottomRgb: red($bottomColor), green($bottomColor), blue($bottomColor);
-  $targetRgb: red($targetColor), green($targetColor), blue($targetColor);
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+
+@function calculate-alpha($topColor, $bottomColor, $targetColor) {
+  $topRgb: color.red($topColor), color.green($topColor), color.blue($topColor);
+  $bottomRgb: color.red($bottomColor), color.green($bottomColor), color.blue($bottomColor);
+  $targetRgb: color.red($targetColor), color.green($targetColor), color.blue($targetColor);
   $alphaAvg: 0;
 
   @for $i from 1 through 3 {
-    $alphaAvg: ($alphaAvg * ($i - 1) + (nth($targetRgb, $i) - nth($bottomRgb, $i)) / (nth($topRgb, $i) - nth($bottomRgb, $i))) / $i;
+    $alphaAvg: math.div($alphaAvg * ($i - 1) + math.div(list.nth($targetRgb, $i) - list.nth($bottomRgb, $i), list.nth($topRgb, $i) - list.nth($bottomRgb, $i)), $i);
   }
 
   @return $alphaAvg;
 }
 
-@function ch-calculate-top-color($alpha, $bottomColor, $targetColor) {
+@function calculate-top-color($alpha, $bottomColor, $targetColor) {
   $topRgb: ();
-  $bottomRgb: red($bottomColor), green($bottomColor), blue($bottomColor);
-  $targetRgb: red($targetColor), green($targetColor), blue($targetColor);
+  $bottomRgb: color.red($bottomColor), color.green($bottomColor), color.blue($bottomColor);
+  $targetRgb: color.red($targetColor), color.green($targetColor), color.blue($targetColor);
 
   @for $i from 1 through 3 {
-    $topRgb: append($topRgb, (nth($targetRgb, $i) - (1 - $alpha) * nth($bottomRgb, $i)) / $alpha);
+    $topRgb: list.append($topRgb, math.div(list.nth($targetRgb, $i) - (1 - $alpha) * list.nth($bottomRgb, $i), $alpha));
   }
 
-  @return rgb(nth($topRgb, 1), nth($topRgb, 2), nth($topRgb, 3));
+  @return rgb(list.nth($topRgb, 1), list.nth($topRgb, 2), list.nth($topRgb, 3));
 }
 
