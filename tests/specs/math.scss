@@ -1,5 +1,8 @@
+@import '../../node_modules/sass-true/sass/true';
+@import '../../stylesheets/color-helpers/math';
+
 @include describe('Math') {
   @include it("should expect two pow four to be sixteen") {
-    @include should(expect(ch-pow(2, 4)), to(equal(16)));
+    @include assert-equal(ch-pow(2, 4), 16);
   }
 }
