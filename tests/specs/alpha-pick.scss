@@ -6,42 +6,42 @@
 
 @include describe('Alpha') {
   @include it('calculates correct color alpha') {
-    $actual: ch.ch-calculate-alpha(green, #10b981, #10b981);
+    $actual: ch.calculate-alpha(green, #10b981, #10b981);
     @include assert-equal($actual, 0);
 
-    $actual: ch.ch-calculate-alpha(#10b981, green, #10b981);
+    $actual: ch.calculate-alpha(#10b981, green, #10b981);
     @include assert-equal($actual, 1);
 
-    $actual: ch.ch-calculate-alpha(black, #10dc98, #10b981);
+    $actual: ch.calculate-alpha(black, #10dc98, #10b981);
     @include assert-close-to($actual, 0.1034688995, 0.00001);
 
-    $actual: ch.ch-calculate-alpha(white, #03251a, #10b981);
+    $actual: ch.calculate-alpha(white, #03251a, #10b981);
     @include assert-close-to($actual, 0.39342268, 0.00001);
 
-    $actual: ch.ch-calculate-alpha(#20f2ff, green, #10b981);
+    $actual: ch.calculate-alpha(#20f2ff, green, #10b981);
     @include assert-close-to($actual, 0.50196, 0.00001);
 
-    $actual: ch.ch-calculate-alpha(#eee, red, pink);
+    $actual: ch.calculate-alpha(#eee, red, pink);
     @include assert-close-to($actual, 0.5532212, 0.00001);
   }
 
   @include it('gets top color from alpha') {
-    $actual: ch.ch-calculate-top-color(0.5, green, #10b981);
+    $actual: ch.calculate-top-color(0.5, green, #10b981);
     @include assert-equal($actual, #20f2ff);
 
-    $actual: ch.ch-calculate-top-color(0.8, red, pink);
+    $actual: ch.calculate-top-color(0.8, red, pink);
     @include assert-equal($actual, #fff0fe);
   }
 
   @include it('handles edge-cases') {
     $infinity: math.div(1, 0);
-    $actual: ch.ch-calculate-alpha(aqua, green, #10b981);
+    $actual: ch.calculate-alpha(aqua, green, #10b981);
     @include assert-equal($actual, $infinity);
 
-    $actual: ch.ch-calculate-alpha(#fff0fe, red, pink);
+    $actual: ch.calculate-alpha(#fff0fe, red, pink);
     @include assert-equal($actual, NaN, $inspect: true);
 
-    $actual: ch.ch-calculate-alpha(#fff, red, pink);
+    $actual: ch.calculate-alpha(#fff, red, pink);
     @include assert-equal($actual, NaN, $inspect: true);
   }
 }

@@ -7,7 +7,7 @@
 
 @include describe('HSL + HSV conversion') {
   @include it("should expect a color to be converted correctly to HSV") {
-    $hsv: ch.ch-hsl-to-hsv(#951);
+    $hsv: ch.hsl-to-hsv(#951);
 
     @include assert-equal(list.length($hsv), 3);
     @include assert-close-to(list.nth($hsv, 1), 30deg);
@@ -16,7 +16,7 @@
   }
 
   @include it("should expect another color to be converted correctly to HSV") {
-    $hsv: ch.ch-hsl-to-hsv(#EFBF5D);
+    $hsv: ch.hsl-to-hsv(#EFBF5D);
 
     @include assert-equal(list.length($hsv), 3);
     @include assert-close-to(list.nth($hsv, 1), 40deg);
@@ -26,8 +26,8 @@
 
   @include it("should expect a color to be converted back and forth with no loss") {
     $initialColor: #EFBF5D;
-    $hsv: ch.ch-hsl-to-hsv($initialColor);
-    $finalColor: ch.ch-hsv-to-color($hsv);
+    $hsv: ch.hsl-to-hsv($initialColor);
+    $finalColor: ch.hsv-to-color($hsv);
 
     @include assert-true(meta.type-of($finalColor) == 'color');
     @include assert-equal($initialColor, $finalColor);

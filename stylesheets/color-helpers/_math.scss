@@ -1,29 +1,29 @@
 @use "sass:math";
 
-@function ch-max($v1, $v2) {
+@function max($v1, $v2) {
   @return if($v1 > $v2, $v1, $v2);
 }
 
-@function ch-min($v1, $v2) {
+@function min($v1, $v2) {
   @return if($v1 < $v2, $v1, $v2);
 }
 
-@function ch-gcd($a, $b) {
+@function gcd($a, $b) {
   // From: http://rosettacode.org/wiki/Greatest_common_divisor#JavaScript
   @if ($b != 0) {
-    @return ch-gcd($b, $a % $b);
+    @return gcd($b, $a % $b);
   } @else {
     @return math.abs($a);
   }
 }
 
-@function ch-pow($base, $exponent, $prec: 12) {
+@function pow($base, $exponent, $prec: 12) {
   // Handles decimal exponents by trying to convert them into a fraction and then use a nthRoot-algorithm for parts of the calculation
   @if (math.floor($exponent) != $exponent) {
-    $prec2 : ch-pow(10, $prec);
+    $prec2 : pow(10, $prec);
     $exponent: math.round($exponent * $prec2);
-    $denominator: ch-gcd($exponent, $prec2);
-    @return ch-nth-root(ch-pow($base, math.div($exponent, $denominator)), math.div($prec2, $denominator), $prec);
+    $denominator: gcd($exponent, $prec2);
+    @return nth-root(pow($base, math.div($exponent, $denominator)), math.div($prec2, $denominator), $prec);
   }
 
   $value: $base;
@@ -40,12 +40,12 @@
   @return $value;
 }
 
-@function ch-nth-root($num, $n: 2, $prec: 12) {
+@function nth-root($num, $n: 2, $prec: 12) {
   // From: http://rosettacode.org/wiki/Nth_root#JavaScript
   $x: 1;
 
   @for $i from 0 through $prec {
-    $x: math.div(1, $n) * (($n - 1) * $x + math.div($num, ch-pow($x, $n - 1)));
+    $x: math.div(1, $n) * (($n - 1) * $x + math.div($num, pow($x, $n - 1)));
   }
 
   @return $x;

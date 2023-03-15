@@ -6,7 +6,7 @@
 @use "sass:meta";
 @use "math" as ch-math;
 
-@function ch-hsv-to-hsl($h, $s: 0, $v: 0) {
+@function hsv-to-hsl($h, $s: 0, $v: 0) {
   @if meta.type_of($h) == 'list' {
     $v: list.nth($h, 3);
     $s: list.nth($h, 2);
@@ -39,7 +39,7 @@
   @return math.div(360deg * $h, 3.1415 * 2), math.percentage(max(0, min(1, $ss))), math.percentage(max(0, min(1, $ll)));
 }
 
-@function ch-hsl-to-hsv($h, $ss: 0, $ll: 0) {
+@function hsl-to-hsv($h, $ss: 0, $ll: 0) {
   @if meta.type_of($h) == 'list' {
     $ll: list.nth($h, 3);
     $ss: list.nth($h, 2);
@@ -78,18 +78,18 @@
   @return math.div(360deg * $h, 3.1415 * 2), math.percentage(max(0, min(1, $s))), math.percentage(max(0, min(1, $v)));
 }
 
-@function ch-color-to-hsv($color) {
-  @return ch-hsl-to-hsv($color);
+@function color-to-hsv($color) {
+  @return hsl-to-hsv($color);
 }
 
-@function ch-hsv-to-color($h, $s: 0, $v: 0) {
-  $hsl: ch-hsv-to-hsl($h, $s, $v);
+@function hsv-to-color($h, $s: 0, $v: 0) {
+  $hsl: hsv-to-hsl($h, $s, $v);
   @return hsl(list.nth($hsl, 1), list.nth($hsl, 2), list.nth($hsl, 3));
 }
 
-@function ch-brightness($h, $s: 0, $v: 0, $adjustment: 0) {
+@function brightness($h, $s: 0, $v: 0, $adjustment: 0) {
   @if meta.type_of($h) == 'color' {
-    $h: ch-color-to-hsv($h);
+    $h: color-to-hsv($h);
   }
   @if meta.type_of($h) == 'list' {
     $adjustment: $s;
@@ -98,7 +98,7 @@
     $h: list.nth($h, 1);
   }
 
-  $v: ch-math.ch-max(0%, ch-math.ch-min(100%, $v + $adjustment));
+  $v: ch-math.max(0%, ch-math.min(100%, $v + $adjustment));
 
-  @return ch-hsv-to-color($h, $s, $v);
+  @return hsv-to-color($h, $s, $v);
 }

@@ -2,7 +2,7 @@
 @use "sass:list";
 @use "sass:math";
 
-@function ch-calculate-alpha($topColor, $bottomColor, $targetColor) {
+@function calculate-alpha($topColor, $bottomColor, $targetColor) {
   $topRgb: color.red($topColor), color.green($topColor), color.blue($topColor);
   $bottomRgb: color.red($bottomColor), color.green($bottomColor), color.blue($bottomColor);
   $targetRgb: color.red($targetColor), color.green($targetColor), color.blue($targetColor);
@@ -15,7 +15,7 @@
   @return $alphaAvg;
 }
 
-@function ch-calculate-top-color($alpha, $bottomColor, $targetColor) {
+@function calculate-top-color($alpha, $bottomColor, $targetColor) {
   $topRgb: ();
   $bottomRgb: color.red($bottomColor), color.green($bottomColor), color.blue($bottomColor);
   $targetRgb: color.red($targetColor), color.green($targetColor), color.blue($targetColor);
