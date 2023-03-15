@@ -1,33 +1,35 @@
-@import '../../node_modules/sass-true/sass/true';
-@import '../utils.scss';
+@use "sass:list";
+@use "sass:meta";
 
-@import '../../stylesheets/color-helpers/hsv-hsl';
+@use '../../node_modules/sass-true' as *;
+@use '../utils' as *;
+@use '../../stylesheets/color-helpers/hsv-hsl' as ch;
 
 @include describe('HSL + HSV conversion') {
   @include it("should expect a color to be converted correctly to HSV") {
-    $hsv: ch-hsl-to-hsv(#951);
+    $hsv: ch.ch-hsl-to-hsv(#951);
 
-    @include assert-equal(length($hsv), 3);
-    @include assert-close-to(nth($hsv, 1), 30deg);
-    @include assert-close-to(nth($hsv, 2), 89%);
-    @include assert-close-to(nth($hsv, 3), 60%);
+    @include assert-equal(list.length($hsv), 3);
+    @include assert-close-to(list.nth($hsv, 1), 30deg);
+    @include assert-close-to(list.nth($hsv, 2), 89%);
+    @include assert-close-to(list.nth($hsv, 3), 60%);
   }
 
   @include it("should expect another color to be converted correctly to HSV") {
-    $hsv: ch-hsl-to-hsv(#EFBF5D);
+    $hsv: ch.ch-hsl-to-hsv(#EFBF5D);
 
-    @include assert-equal(length($hsv), 3);
-    @include assert-close-to(nth($hsv, 1), 40deg);
-    @include assert-close-to(nth($hsv, 2), 61%);
-    @include assert-close-to(nth($hsv, 3), 94%);
+    @include assert-equal(list.length($hsv), 3);
+    @include assert-close-to(list.nth($hsv, 1), 40deg);
+    @include assert-close-to(list.nth($hsv, 2), 61%);
+    @include assert-close-to(list.nth($hsv, 3), 94%);
   }
 
   @include it("should expect a color to be converted back and forth with no loss") {
     $initialColor: #EFBF5D;
-    $hsv: ch-hsl-to-hsv($initialColor);
-    $finalColor: ch-hsv-to-color($hsv);
+    $hsv: ch.ch-hsl-to-hsv($initialColor);
+    $finalColor: ch.ch-hsv-to-color($hsv);
 
-    @include assert-true(type-of($finalColor) == 'color');
+    @include assert-true(meta.type-of($finalColor) == 'color');
     @include assert-equal($initialColor, $finalColor);
   }
 }
